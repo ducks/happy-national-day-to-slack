@@ -3,11 +3,12 @@ var request = require('request');
 var $ = require('cheerio');
 var slackbot = require('slackbot');
 
-var slackUrl = config.slackUrl;
-var setTopic = config.setTopic;
+var slackUrl = 'https://slack.com/api/';
+var setTopic = 'channels.setTopic';
 var slackChannel = config.slackChannel;
 var slackToken = config.slackToken;
 var nationalUrl = 'http://nationaldaycalendar.com/latest-posts/';
+var slackPostUrl = slackUrl + setTopic + slackToken + '&' + slackChannel;
 
 request(nationalUrl, function(err, res, body) {
   if (!err && res.statusCode == 200) {
@@ -19,7 +20,8 @@ request(nationalUrl, function(err, res, body) {
 
     var message = 'HAPPY ' + _days + '!';
 
-    request(slackUrl + setTopic + slackToken + '&' + slackChannel + '&topic=' + message, function(error, response, body) {
+    request(slackPostUrl + '&topic=' + message, 
+      function(error, response, body) {
       if (error) {
         console.log(error);
       }
