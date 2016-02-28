@@ -1,14 +1,14 @@
-var config = require('./config');
-var request = require('request');
-var $ = require('cheerio');
-var slackbot = require('slackbot');
+var config = require('./config'),
+    request = require('request'),
+    $ = require('cheerio'),
+    slackbot = require('slackbot');
 
-var slackUrl = 'https://slack.com/api/';
-var setTopic = 'channels.setTopic';
-var slackChannel = config.slackChannel;
-var slackToken = config.slackToken;
-var nationalUrl = 'http://nationaldaycalendar.com/latest-posts/';
-var slackPostUrl = slackUrl + setTopic + slackToken + '&' + slackChannel;
+var slackUrl = 'https://slack.com/api/',
+    setTopic = 'channels.setTopic',
+    slackChannel = config.slackChannel,
+    slackToken = config.slackToken,
+    nationalUrl = 'http://nationaldaycalendar.com/latest-posts/',
+    slackPostUrl = slackUrl + setTopic + slackToken + '&' + slackChannel;
 
 request(nationalUrl, function(err, res, body) {
   if (!err && res.statusCode == 200) {
