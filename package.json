@@ -1,0 +1,13 @@
+{
+  "name": "slack-national-happy-day",
+  "version": "1.0.0",
+  "description": "get national day and post to slack",
+  "main": "index.js",
+  "author": "Jake Goldsborough <rjgoldsborough[at]gmail[dot]com>",
+  "license": "Beerware",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "request": "^2.60.0",
+    "slackbot": "0.0.2"
+  }
+}
